@@ -26,8 +26,6 @@ Horns.prototype.render = function(){
   $('main').append($newSection);
 }
 
-
-
 $.ajax('data/page-1.json', {method: 'Get', dataType: 'JSON'})
   .then(data => {
     data.forEach(value => {
