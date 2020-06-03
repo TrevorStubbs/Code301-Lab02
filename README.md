@@ -54,3 +54,5 @@ Finish time: 18:15
 Actual time needed to complete: 45 minutes
 ### Day 1 Stretch
 - Sort the images
+
+
