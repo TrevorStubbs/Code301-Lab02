@@ -20,7 +20,7 @@ Horns.prototype.render = function(){
   // Store the template
 
   //make a copy of the template
-  const $newSection = $(`<section>${myTemplate}</section`);
+  const $newSection = $(`<section class=${this.keyword}>${myTemplate}</section`);
 
   //fill the copy with object data
   $newSection.find('h2').text(this.title);
@@ -51,6 +51,14 @@ const keywordFiller = (obj) => {
       keywordArray.push(value.keyword);
     }
   });
+  // sort the keyword array
+  keywordArray.sort((a, b) => {
+    if(a > b){
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 };
 
 // the drop down box with the keywords.
@@ -65,17 +73,6 @@ const boxFiller = () => {
 // initialize page
 const initializePage = () => {
   $('main').empty();
-  keywordFiller(allHorns);
-
-  // sort the keyword array
-  keywordArray.sort((a, b) => {
-    if(a > b){
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-  boxFiller();
 
   // sort the object array by title
   allHorns.sort((a,b) => {
@@ -86,12 +83,14 @@ const initializePage = () => {
     }
   });
 
+  keywordFiller(allHorns);
+  boxFiller();
   // render the objects
   allHorns.forEach(value => value.render());
 }
 
 // Event listener to show only selected keywords
-$('select').on('click', function(event){
+$('select').on('change', function(event){
   event.preventDefault();
   // If thing that was click is not default
   if($(this).val() !== 'default'){
@@ -111,6 +110,10 @@ $('select').on('click', function(event){
     allHorns.forEach(value => value.render());
   }
 });
+
+// function filter() {
+//   let keywordImage = $(this).val();
+// }
 
 // Once the page loads do these things.
 $(document).ready( () => {
