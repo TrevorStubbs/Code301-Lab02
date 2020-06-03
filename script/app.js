@@ -3,6 +3,7 @@
 // array to hold all objects
 let allHorns = [];
 let keywordArray = [];
+const myTemplate = $('#photo-template').html();
 
 // Constructor function to build objects
 function Horns(obj){
@@ -17,7 +18,7 @@ function Horns(obj){
 // render function to show image
 Horns.prototype.render = function(){
   // Store the template
-  const myTemplate = $('#photo-template').html();
+
 
   //make a copy of the template
   const $newSection = $(`<section>${myTemplate}</section`);
@@ -26,6 +27,7 @@ Horns.prototype.render = function(){
   $newSection.find('h2').text(this.title);
   $newSection.find('p').text(this.description);
   $newSection.find('img').attr('src', this.image_url);
+  $newSection.find('img').attr('title', this.title);
   $newSection.find('img').attr('alt', this.title);
 
   // Append the copy to the DOM
@@ -38,8 +40,7 @@ $.ajax('data/page-1.json', {method: 'Get', dataType: 'JSON'})
     data.forEach(value => {
       new Horns(value);
     });
-    allHorns.forEach(value => value.render());
-    populateBox();
+    initializePage();
   });
 
 // Fill the keywordArray with unique keywords
@@ -54,25 +55,39 @@ const keywordFiller = (obj) => {
 // the drop down box with the keywords.
 const boxFiller = () => {
   keywordArray.forEach(value => {
-    let $newOption = $('<option></option>')
-    $newOption.text(value);
-    $newOption.attr(`value=${value.title}`);
+    let $newOption = $(`<option>${value}</option>`)
+    $newOption.attr(`value`, `${value}`);
     $('select').first().append($newOption);
   });
 }
 
-// master box filler function
-const populateBox = () => {
+// initialize page
+const initializePage = () => {
+  $('main').empty();
+  allHorns.forEach(value => value.render());
   keywordFiller(allHorns);
   boxFiller();
 }
 
-function eventHandler(event){
-  console.log( $(this).text());
-}
+// Event listener to show only selected keywords
+$('select').on('click', function(event){
+  event.preventDefault();
+  // If thing that was click is not default
+  if($(this).val() !== 'default'){
+    //clear all the images and tags
+    $('main').empty();
+    // loop through allHorns array and look for matching keywords
+    allHorns.forEach(value => {
+      // If found render that image to the page
+      if($(this).val() === value.keyword){
+        value.render();
+      }
+    });
+  } else {
+    // Clear the page
+    $('main').empty();
+    // Render all images again
+    allHorns.forEach(value => value.render());
+  }
+});
 
-$('select').first().on('click', 'option', eventHandler);
-
-$(document).ready(()=>{
-  console.log('ready');
-})
