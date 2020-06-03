@@ -1,5 +1,9 @@
 # Gallery of Horns
-- use floats
+
+## Names: Trevor Stubbs and Christopher Hamersly
+
+## Open in browser
+
 ## Day 1 - Lab 02
 ### Feature #1: Display Images
 - Why are we implementing this feature?
@@ -50,3 +54,5 @@ Finish time: 18:15
 Actual time needed to complete: 45 minutes
 ### Day 1 Stretch
 - Sort the images
+
+
