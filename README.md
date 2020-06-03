@@ -84,9 +84,9 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 14:40
 
-Finish time: _____
+Finish time: 15:25
 
-Actual time needed to complete: _____
+Actual time needed to complete: 45 minutes
 ### Feature 3: Styling with Flexbox
 - Why
     - As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images.
