@@ -41,9 +41,9 @@ Actual time needed to complete: 2.2 hours
 - HOw
     - Use floats
     - use 1 google font.
-    Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 17:30
 
 Finish time: _____
 

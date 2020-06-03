@@ -1,2 +1,13 @@
 * {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+html{
+  background-color: antiquewhite;
+}
+
+body{
+  width: 960px;
+  margin: auto;
 }
