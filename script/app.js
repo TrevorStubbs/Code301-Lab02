@@ -1,9 +1,10 @@
 'use strict'
 
+const template = $('#mus-template').html();
+
 // array to hold all objects
 let allHorns = [];
 let keywordArray = [];
-const myTemplate = $('#photo-template').html();
 let pageSelect = 1;
 
 // Constructor function to build objects
@@ -18,20 +19,11 @@ function Horns(obj){
 
 // render function to show image
 Horns.prototype.render = function(){
-  // Store the template
-
   //make a copy of the template
-  const $newSection = $(`<section class=${this.keyword}>${myTemplate}</section`);
-
-  //fill the copy with object data
-  $newSection.find('h2').text(this.title);
-  $newSection.find('p').text(this.description);
-  $newSection.find('img').attr('src', this.image_url);
-  $newSection.find('img').attr('title', this.title);
-  $newSection.find('img').attr('alt', this.title);
+  const myTemplate = Mustache.render(template, this); //eslint-disable-line
 
   // Append the copy to the DOM
-  $('main').append($newSection);
+  $('main').append(myTemplate);
 }
 
 const ajaxCaller = (page) =>{

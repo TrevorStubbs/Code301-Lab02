@@ -80,13 +80,13 @@ Actual time needed to complete: 25 minutes
 - How
     - Create the appropriate Mustache template in your HTML with the same `<h2>`, `<img>`, and `<p>` elements as the jQuery template from the prior lab.
     - Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 14:40
 
-Finish time: _____
+Finish time: 15:25
 
-Actual time needed to complete: _____
+Actual time needed to complete: 45 minutes
 ### Feature 3: Styling with Flexbox
 - Why
     - As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images.
