@@ -19,7 +19,6 @@ function Horns(obj){
 Horns.prototype.render = function(){
   // Store the template
 
-
   //make a copy of the template
   const $newSection = $(`<section>${myTemplate}</section`);
 
@@ -34,14 +33,16 @@ Horns.prototype.render = function(){
   $('main').append($newSection);
 }
 
-// the ajax to pull the JSON data
-$.ajax('data/page-1.json', {method: 'Get', dataType: 'JSON'})
-  .then(data => {
-    data.forEach(value => {
-      new Horns(value);
+const ajaxCaller = () =>{
+  // the ajax to pull the JSON data
+  $.ajax('data/page-1.json', {method: 'Get', dataType: 'JSON'})
+    .then(data => {
+      data.forEach(value => {
+        new Horns(value);
+      });
+      initializePage();
     });
-    initializePage();
-  });
+}
 
 // Fill the keywordArray with unique keywords
 const keywordFiller = (obj) => {
@@ -109,5 +110,11 @@ $('select').on('click', function(event){
     // Render all images again
     allHorns.forEach(value => value.render());
   }
+});
+
+// Once the page loads do these things.
+$(document).ready( () => {
+  console.log('hello World');
+  ajaxCaller();
 });
 

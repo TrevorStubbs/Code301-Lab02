@@ -1,4 +1,9 @@
 # Gallery of Horns
+
+## Names: Trevor Stubbs and Christopher Hamersly
+
+## Open in browser
+
 - use floats
 ## Day 1 - Lab 02
 ### Feature #1: Display Images
