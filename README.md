@@ -45,8 +45,8 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 17:30
 
-Finish time: _____
+Finish time: 18:15
 
-Actual time needed to complete: _____
+Actual time needed to complete: 45 minutes
 ### Day 1 Stretch
 - Sort the images

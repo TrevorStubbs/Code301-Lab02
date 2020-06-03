@@ -64,9 +64,29 @@ const boxFiller = () => {
 // initialize page
 const initializePage = () => {
   $('main').empty();
-  allHorns.forEach(value => value.render());
   keywordFiller(allHorns);
+
+  // sort the keyword array
+  keywordArray.sort((a, b) => {
+    if(a > b){
+      return 1;
+    } else {
+      return -1;
+    }
+  });
   boxFiller();
+
+  // sort the object array by title
+  allHorns.sort((a,b) => {
+    if(a.title > b.title){
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+  // render the objects
+  allHorns.forEach(value => value.render());
 }
 
 // Event listener to show only selected keywords
