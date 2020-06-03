@@ -94,13 +94,13 @@ Actual time needed to complete: 45 minutes
     - Given that a user opens the application in the browser When the user navigates to the home page Then the images should be displayed in columns, as screen width allows
 - How
     - Refactor your CSS to use Flexbox instead of floats. You are welcome to use a combination of floats and Flexbox, as you see fit.
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 15:35
 
-Finish time: _____
+Finish time: 15:45
 
-Actual time needed to complete: _____
+Actual time needed to complete: 10 minutes
 ### Feature 4: Sort the images
 - Why
     - As a user, I want to be able to sort the images so that there is an order to their rendering.
@@ -109,10 +109,28 @@ Actual time needed to complete: _____
 - How
     - Add the ability for the user to sort the images by either title or by number of horns.
     - Sort the images by one of the properties on page load. This should also apply to the second page of images.
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 15:45
 
-Finish time: _____
+Finish time: 16:45
 
-Actual time needed to complete: _____
+Actual time needed to complete: 30 minutes
+### Day 2: Stretch Goal 1- Detail view
+- Why
+    - As a user, I want the image to be displayed in a larger size and with the description shown so that I can view the details of a single image.
+- What
+    - Given that a user wants to view the details of the image When the user clicks on an individual image Then the image should render larger on the screen with the description displayed
+- How
+    - Add a detail view which will display the image in a larger size in the center of the screen with a colored background.
+    - The description should be shown now, as well.
+    - When the user clicks off of the image, return to the grid view.
+    - Use a transition or animation to show and hide the detail view of an image.
+### Day 2: Stretch Goal 2 - Fuzzy search
+- Why
+    - As a user, I want the ability to search my images so that I can view only the images containing specific titles or keywords.
+- What
+    - Given that a user enters wants to view specific images When the user enters a character into the search field Then only the images matching the current set of characters should be displayed on the screen
+- How
+    - Create an input element to allow users to search for an image. It is up to you and your partner to decide if the user should be able to search by title, keyword, or both.
+    - Write a regular expression pattern to create a fuzzy search so that the results are narrowed down and displayed every time the user enters or removes a character from the input.

@@ -1,20 +1,18 @@
+main{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 section{
   width: 400px;
-  height: 550px;
-  /* float: left; */
-}
-
-section:nth-child(odd){
-  float: left;
-}
-
-section:nth-child(even){
-  float: right;
+  height: 400px;
 }
 
 img{
-  max-width: 500px;
-  max-height: 450px;
+  max-width: 400px;
+  max-height: 300px;
+  border-radius: 10%;
 }
 
 footer {

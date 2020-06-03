@@ -1,11 +1,10 @@
 'use strict'
 
-const template = $('#mus-template').html();
-
 // array to hold all objects
 let allHorns = [];
 let keywordArray = [];
 let pageSelect = 1;
+let sortBy = 'title';
 
 // Constructor function to build objects
 function Horns(obj){
@@ -20,6 +19,7 @@ function Horns(obj){
 // render function to show image
 Horns.prototype.render = function(){
   //make a copy of the template
+  const template = $('#mus-template').html();
   const myTemplate = Mustache.render(template, this); //eslint-disable-line
 
   // Append the copy to the DOM
@@ -46,11 +46,7 @@ const keywordFiller = (obj) => {
   });
   // sort the keyword array
   keywordArray.sort((a, b) => {
-    if(a > b){
-      return 1;
-    } else {
-      return -1;
-    }
+    return a > b ? 1: -1;
   });
 };
 
@@ -74,20 +70,24 @@ const boxFiller = () => {
 // initialize page
 const initializePage = () => {
   $('main').empty();
-
-  // sort the object array by title
-  allHorns.sort((a,b) => {
-    if(a.title > b.title){
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-
+  imageSorter(sortBy);
   keywordFiller(allHorns);
   boxFiller();
   // render the objects
   allHorns.forEach(value => value.render());
+}
+
+// Sort the allHorns array by eithe
+const imageSorter = (how) => {
+  if(how === 'title'){
+    allHorns.sort((a,b) => {
+      return a.title > b.title ? 1: -1;
+    });
+  } else {
+    allHorns.sort((a,b) => {
+      return a.horns - b.horns;
+    });
+  }
 }
 
 // Event listener to show only selected keywords
@@ -112,22 +112,41 @@ $('select').on('change', function(event){
   }
 });
 
-// event listener to change the page to json data based of which page.
-$('button').on('click', function(event){
-  event.preventDefault();
+const arrayClearer = () => {
   allHorns = [];
   keywordArray = [];
+}
+
+// event listener to change the page to json data based of which page.
+$('#page').on('click', function(event){
+  event.preventDefault();
+  arrayClearer();
   if(pageSelect === 1){
     pageSelect = 2;
-    $('button').text('Go to page 1')
+    $('#page').text('Go to page 1')
   } else {
     pageSelect = 1;
-    $('button').text('Go to page 2')
+    $('#page').text('Go to page 2')
   }
   ajaxCaller(pageSelect);
-})
+});
 
-// Once the page loads do these things.
+// Event listener to change how the images are sorted.
+$('#sort').on('click', function(event){
+  event.preventDefault();
+  arrayClearer();
+  console.log('Am I alive?');
+  if(sortBy === 'title') {
+    sortBy = 'horns';
+    $('#sort').text('Sort By Title');
+  } else {
+    sortBy = 'title';
+    $('#sort').text('Sort By Horns');
+  }
+  ajaxCaller(pageSelect);
+});
+
+// Once the page loads start the initial ajax call.
 $(document).ready( () => {
   ajaxCaller(pageSelect);
 });
