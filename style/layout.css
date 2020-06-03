@@ -1,0 +1,26 @@
+section{
+  width: 400px;
+  height: 550px;
+  /* float: left; */
+}
+
+section:nth-child(odd){
+  float: left;
+}
+
+section:nth-child(even){
+  float: right;
+}
+
+img{
+  max-width: 500px;
+  max-height: 450px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  background-color: antiquewhite;
+}
