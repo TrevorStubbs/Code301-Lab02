@@ -4,6 +4,7 @@
 let allHorns = [];
 let keywordArray = [];
 const myTemplate = $('#photo-template').html();
+let pageSelect = 1;
 
 // Constructor function to build objects
 function Horns(obj){
@@ -33,9 +34,9 @@ Horns.prototype.render = function(){
   $('main').append($newSection);
 }
 
-const ajaxCaller = () =>{
+const ajaxCaller = (page) =>{
   // the ajax to pull the JSON data
-  $.ajax('data/page-1.json', {method: 'Get', dataType: 'JSON'})
+  $.ajax(`data/page-${page}.json`, {method: 'Get', dataType: 'JSON'})
     .then(data => {
       data.forEach(value => {
         new Horns(value);
@@ -63,8 +64,16 @@ const keywordFiller = (obj) => {
 
 // the drop down box with the keywords.
 const boxFiller = () => {
+  // clear the keyword box
+  $('select').empty();
+  // fill the first position with the default selection
+  let $newOption = $(`<option></option`);
+  $newOption.text('Filter By Keyword');
+  $newOption.attr(`value`, `default`);
+  $('select').append($newOption);
+  // Fill the rest with the new keywords.
   keywordArray.forEach(value => {
-    let $newOption = $(`<option>${value}</option>`)
+    $newOption = $(`<option>${value}</option>`);
     $newOption.attr(`value`, `${value}`);
     $('select').first().append($newOption);
   });
@@ -111,9 +120,23 @@ $('select').on('change', function(event){
   }
 });
 
+// event listener to change the page to json data based of which page.
+$('button').on('click', function(event){
+  event.preventDefault();
+  allHorns = [];
+  keywordArray = [];
+  if(pageSelect === 1){
+    pageSelect = 2;
+    $('button').text('Go to page 1')
+  } else {
+    pageSelect = 1;
+    $('button').text('Go to page 2')
+  }
+  ajaxCaller(pageSelect);
+})
+
 // Once the page loads do these things.
 $(document).ready( () => {
-  console.log('hello World');
-  ajaxCaller();
+  ajaxCaller(pageSelect);
 });
 
