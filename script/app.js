@@ -111,10 +111,6 @@ $('select').on('change', function(event){
   }
 });
 
-// function filter() {
-//   let keywordImage = $(this).val();
-// }
-
 // Once the page loads do these things.
 $(document).ready( () => {
   console.log('hello World');

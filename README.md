@@ -4,7 +4,6 @@
 
 ## Open in browser
 
-- use floats
 ## Day 1 - Lab 02
 ### Feature #1: Display Images
 - Why are we implementing this feature?
